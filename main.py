@@ -15,15 +15,19 @@ st.header('This is a test')
 
 sentence = st.text_input('rentre une phrase à encoder:')
 
-if st.button('Encoder', key=1):
-    resultat = encode(sentence)
-    st.write(f'texte encodé : {resultat}')
+col1, col2 = ["",""]
 
-elif st.button('Decoder', key=2):
-        decode_sentence = decode(sentence)
-        st.write(f'Texte décodé: {decode_sentence}')
+with col1:
+    if st.button('Encoder', key=1):
+        resultat = encode(sentence)
+        st.write(f'texte encodé : {resultat}')
 
-else:
-    st.error("On t'as dit de rentrer du text t'es bouché à l'emery ou quoi frérot ?")
+        with col2:
+            if st.button('Decoder', key=2):
+                    decode_sentence = decode(sentence)
+                st.write(f'Texte décodé: {decode_sentence}')
+
+    else:
+        st.error("Appuie sur un des boutons espèces de gras double ?")
 
 ### Affichage de la réponse (encodage ou décodage):
