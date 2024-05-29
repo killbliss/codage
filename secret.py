@@ -5,8 +5,15 @@ code_ = "p+çS#2z8GceHw`Ormè M;%@3g€KRa!^iv1sA,Q9qCIb:NYDhy'/u0oF?éXEkB*jP¨
 def encode(texte):
     codage = []
     for index, char in enumerate(texte):
-        Y = (index + 3) % len(code_)  
-    return ''.join(codage), texte 
+        if char in alphabet:
+            # Calculer le nouvel index avec un décalage de (index + 3)
+            new_index = (alphabet.index(char) + (index + 3)) % len(alphabet)
+            codage.append(alphabet[new_index])
+        else:
+            # Si le caractère n'est pas dans l'alphabet, on le garde tel quel
+            codage.append(char)
+    return ''.join(codage)
+
 
 
 def decode(cd):
